@@ -37,7 +37,7 @@ async function setup() {
     const db = await mysql.createConnection({
       host: "localhost",
       user: "root",
-      database: "DogWalkService",
+      database: "DogWalkService"
     });
 
     // Add users if needed
@@ -54,7 +54,7 @@ async function setup() {
 
     // Add walk requests if needed
     const [walks] = await db.query(
-      "SELECT count(*) AS count FROM WalkRequests;",
+      "SELECT count(*) AS count FROM WalkRequests;"
     );
     if (walks[0].count === 0) {
       await db.query(SQL_INSERT_WALK_REQUESTS);
@@ -62,7 +62,7 @@ async function setup() {
 
     // Add walk ratings if needed
     const [ratings] = await db.query(
-      "SELECT count(*) AS count FROM WalkRatings;",
+      "SELECT count(*) AS count FROM WalkRatings;"
     );
     if (ratings[0].count === 0) {
       await db.query(SQL_INSERT_WALK_RATINGS);
@@ -71,7 +71,7 @@ async function setup() {
   } catch (err) {
     console.error(
       "Error setting up database. Ensure Mysql is running: service mysql start",
-      err,
+      err
     );
     return null;
   }

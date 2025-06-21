@@ -34,7 +34,7 @@
     <div>
       <h2>All Registered Dogs</h2>
       <div v-if="doggoErr" class="alert alert-danger">{{ doggoErr }}</div>
-      <table class="table">
+      <table class="table table-striped">
         <thead>
           <tr>
             <th>Dog Id</th>
@@ -44,7 +44,7 @@
             <th>Photo</th>
           </tr>
         </thead>
-        <tbody class="table-striped">
+        <tbody>
           <tr v-for="dog in registeredDogList">
             <td>{{ dog.dog_id }}</td>
             <td>{{ dog.dog_name}}</td>

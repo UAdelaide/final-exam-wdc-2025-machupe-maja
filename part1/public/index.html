@@ -10,16 +10,35 @@
   <body>
     <div id="content">
       <h1>Dogify</h1>
-      <img src="doggoUrl" title="" />
+      <img src="doggo.url" title="" />
     </div>
 
     <script type="module">
-      const { createApp } = Vue;
+      const {createApp} = Vue;
 
       createApp({
         data() {
-          doggoUrl: "";
+          doggo: {
+            url: ""
+          };
         },
+        methods: {
+          fetchRandoDoggo() {
+            const response = await fetch("https://dog.ceo/api/breed/husky/iamges/random", {
+              method: "GET"
+            });
+
+            if (!response.ok) {
+              const results = await response.json();
+              let errMsg = 
+              if (results.error) errMsg = results.error;
+              throw new Error(errMsg);
+            }
+
+            // At this point the username cookie should be set (by the server)
+            const user = await response.json();
+          }
+        }
       }).mount("#content");
     </script>
   </body>

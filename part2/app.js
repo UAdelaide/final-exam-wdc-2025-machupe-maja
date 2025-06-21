@@ -26,8 +26,6 @@ app.use('/api/walks', walkRoutes);
 app.use('/api/users', userRoutes);
 
 // GET all dogs
-
-
 app.get('/api/dogs', async (req, res) => {
   const dogs_sql = `
     SELECT

@@ -89,6 +89,16 @@
           }
         }
 
+        async function loadUser() {
+          const response = await fetch("/api/users/me", {
+              method: "GET"
+          });
+
+          const results = await response.json();
+          console.dir('===logged in as:===');
+          console.dir(results);
+        }
+
         async function submitWalkRequest() {
           try {
             const res = await fetch('/api/walks', {
@@ -116,6 +126,7 @@
         }
 
         onMounted(() => {
+          loadUser();
           loadWalks();
         });
 

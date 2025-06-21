@@ -11,6 +11,7 @@
     <div id="content">
       <h1>Dogify</h1>
       <img src="doggo.url" title="" />
+      <p v-if="doggoErr" id="error">{{doggoErr}}</p>
     </div>
 
     <script type="module">
@@ -18,27 +19,36 @@
 
       createApp({
         data() {
-          doggo: {
-            url: ""
-          };
+          return {
+            doggo: {
+              url: ""
+            },
+            doggoErr: ""
+          }
         },
         methods: {
-          fetchRandoDoggo() {
-            const response = await fetch("https://dog.ceo/api/breed/husky/iamges/random", {
+          async fetchRandoDoggo() {
+            // Fetch!
+            const response = fetch("https://dog.ceo/api/breed/husky/images/random", {
               method: "GET"
             });
 
+            results = await response.json();
+            
+            // Oh noooo
             if (!response.ok) {
-              const results = await response.json();
-              let errMsg = 
-              if (results.error) errMsg = results.error;
-              throw new Error(errMsg);
+              this.doggoErr = "Couldn't fetch the doggo"
             }
 
-            // At this point the username cookie should be set (by the server)
-            const user = await response.json();
+            // Set the URL
+            if (results && results.status === "success") {
+              this.doggo.url = results.message;
+            }
           }
-        }
+        },
+        mounted() {
+          fetchRandoDoggo();
+        }  
       }).mount("#content");
     </script>
   </body>

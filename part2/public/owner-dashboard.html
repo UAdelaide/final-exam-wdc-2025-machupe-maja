@@ -130,8 +130,8 @@
 
           const results = await response.json();
 
-          if (res.ok && results.length > 0) {
-            dogNameList = results;
+          if (res.ok && results.message === "success") {
+            dogNameList = results.dogs;
           }
         }
 

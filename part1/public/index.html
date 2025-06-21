@@ -37,6 +37,11 @@
           showDoggoDeets: false
         }
       },
+      computed: {
+        picUrl() {
+          return this.currPic;
+        }
+      },
       methods: {
         async nextDoggo() {
           fetchDogPic().then(() => {

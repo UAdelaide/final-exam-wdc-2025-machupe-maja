@@ -15,7 +15,7 @@
       <button type="button" @click="nextDoggo">Next Doggo</button>
       <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
       <div v-if="showDoggoDeets && currDoggo" id="doggo-deets">
-        <img :src="currDoggo.pic" title="A picture of a husky" />
+          <img :src="currDoggo.pic" />
         <p>Name: {{ currDoggo.dog_name }}</p>
         <p>Size: {{ currDoggo.size }}</p>
         <p>Owner: {{ currDoggo.owner_username }}</p>

@@ -44,7 +44,6 @@ app.get('/api/dogs', async (req, res) => {
     // Returning as pure JSON instead of stringified
     res.json(rows);
   } catch (err) {
-    // 500 Since it's likely a server related problem
     // Noone let the dogs out :(
     res.status(500).json({ error: 'Error trying to let the dogs out!' });
     console.error('Error trying to let the dogs out! \n', err);

@@ -9,8 +9,13 @@
 
   <body>
     <div id="content">
-      <h1>Dogify</h1>
-      <img :src="doggo.url" title="" />
+      <h1>Dog of the Day</h1>
+      <button 
+        type="button" 
+        title="Fetch a random picture of a husky"
+        @click="fetchRandoDogg()">
+        huskify</button>
+      <img :src="doggo.url" title="A picture of a husky" />
       <p v-if="doggoErr" id="error">{{doggoErr}}</p>
     </div>
 

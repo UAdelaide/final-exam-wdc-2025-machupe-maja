@@ -13,10 +13,15 @@
       <button 
         type="button" 
         title="Fetch a random picture of a husky"
-        @click="fetchRandoDoggo()">
+        @click="fetchNextDoggo()">
         huskify</button>
       <div id="doggoContainer">
-        <img :src="doggo.url" title="A picture of a husky" />
+        <img :src="dogList[currDoggo].picUrl" title="A picture of a husky" />
+        <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
+        <div v-if="showDoggoDeets" id="doggo-deets">
+          <p>Name: {{ dogList[currDoggo].dog_name }}</p>
+          <p>Size: {{ dogList[currDoggo].size }}</p>
+          <p>Owner: {{ dogList[currDoggo].ower_name }}</p>
         <p v-if="doggoErr" id="error">{{doggoErr}}</p>
       <div>
     </main>
@@ -27,11 +32,10 @@
       createApp({
         data() {
           return {
-            doggo: {
-              url: ""
-            },
-            doggoList: [],
-            doggoErr: ""
+            currDoggo: 0,
+            dogList: [],
+            doggoErr: "",
+            nextDoggo: 0
           }
         },
         methods: {
@@ -51,10 +55,10 @@
 
             // populate the list
             if (results && results.length > 0) {
-              this.doggoList = results;
+              this.dogList = results;
             }
           },
-          async fetchRandoDoggo() {
+          async fetchDogPic() {
             // Fetch!
             const response = await fetch("https://dog.ceo/api/breed/husky/images/random", {
               method: "GET"
@@ -69,13 +73,16 @@
 
             // Set the URL
             if (results && results.status === "success") {
-              this.doggo.url = results.message;
+              results.message;
             }
           }
         },
         mounted() {
-          this.loadDogList().then();
-          this.fetchRandoDoggo().then();
+          this.loadDogList().then(() => {
+            for (const i = 0; i < this.dogList.length; i++) {
+              this.dogList[i].picUrl = this.fetchDogPic().then(url => url);
+            }
+          });
         }  
       }).mount("#content");
     </script>

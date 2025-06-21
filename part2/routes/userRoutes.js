@@ -66,4 +66,10 @@ router.post('/logout', async (req, res) => {
   res.json({ message: 'Logout successful' });
 });
 
+
+// GET dogs for this user
+router.post('/dogs', async (req, res) => {
+  res.json({ message: '', dogs: [] });
+});
+
 module.exports = router;

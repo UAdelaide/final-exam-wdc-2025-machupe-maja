@@ -37,7 +37,7 @@
         computed: {
           picUrl() {
             if (this.dogList.length > 0) {
-              return this.dogList[currDoggo].picUrl;
+              return this.dogList[this.currDoggo].picUrl;
             } else {
               return "";
             }

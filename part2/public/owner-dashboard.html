@@ -122,6 +122,18 @@
           }
         }
 
+        async function loadDogs() {
+          const response = await fetch("/api/users/dogs", {
+              method: "GET"
+          });
+
+          const results = await response.json();
+
+          if (res.ok && results.length > 0) {
+            dogList = results;
+          }
+        }
+
         async function submitWalkRequest() {
           try {
             const res = await fetch('/api/walks', {

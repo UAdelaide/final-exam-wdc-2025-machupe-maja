@@ -46,16 +46,16 @@
         </thead>
         <tbody>
           <tr v-for="dog in registeredDogList">
-            <th>{{ dog.dog_id }}</th>
-            <th>{{ dog.dog_name}}</th>
-            <th>{{ dog.size}}</th>
-            <th>{{ dog.owner_id }}</th>
-            <th>
+            <td>{{ dog.dog_id }}</td>
+            <td>{{ dog.dog_name}}</td>
+            <td>{{ dog.size}}</td>
+            <td>{{ dog.owner_id }}</td>
+            <td>
                 <img 
                 :src="dog.pic" 
                 :alt="'Picture of a dog named ' + dog.dog_name" 
                 style="max-height: 100px"/>
-            </th>
+            </td>
           </tr>
         </tbody>
       </table>

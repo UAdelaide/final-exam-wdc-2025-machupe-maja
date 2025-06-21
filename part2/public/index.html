@@ -71,6 +71,9 @@
           registeredDogList: []
         };
       },
+      mounted() {
+        loadDogList().then();
+      },
       methods: {
         async login() {
           const request_data = {

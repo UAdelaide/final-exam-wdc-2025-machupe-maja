@@ -28,7 +28,7 @@ app.use('/api/users', userRoutes);
 // GET all dogs
 
 
-router.get('/api/dogs', async (req, res, next) => {
+app.get('/api/dogs', async (req, res) => {
   const dogs_sql = `
     SELECT
       name AS dog_name,
@@ -45,7 +45,6 @@ router.get('/api/dogs', async (req, res, next) => {
     res.json(rows);
   } catch (err) {
     // 500 Since it's likely a server related problem
-    res.status(500);
     // Noone let the dogs out :(
     res.status(500).json({ error: 'Error trying to let the dogs out!' });
     console.error('Error trying to let the dogs out! \n', err);

@@ -28,6 +28,28 @@
     </div>
     <!--a href="owner-dashboard.html" class="btn btn-outline-primary me-2">Owner Dashboard</a>
     <a href="walker-dashboard.html" class="btn btn-outline-success">Walker Dashboard</a-->
+
+    <h2>All Registered Dogs</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Dog Id</th>
+          <th>Name</th>
+          <th>Size</th>
+          <th>Owner Id</th>
+          <th>Photo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="dog in registeredDogList">
+          <th>{{ dog.dog_id }}</th>
+          <th>{{ dog.dog_name}}</th>
+          <th>{{ dog.size}}</th>
+          <th>{{ dog.owner_id }}</th>
+          <th>{{ dog.dog_id }}</th>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
   <script>

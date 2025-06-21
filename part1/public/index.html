@@ -16,7 +16,7 @@
           <img :src="picUrl()" title="A picture of a husky" />
           <p>Name: {{ dogList[currDoggo].dog_name }}</p>
           <p>Size: {{ dogList[currDoggo].size }}</p>
-          <p>Owner: {{ dogList[currDoggo].ower_name }}</p>
+          <p>Owner: {{ dogList[currDoggo].owner_username }}</p>
         </div>
         <p v-if="doggoErr" id="error">{{doggoErr}}</p>
       <div>

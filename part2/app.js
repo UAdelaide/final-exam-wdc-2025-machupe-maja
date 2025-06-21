@@ -31,6 +31,7 @@ app.use('/api/users', userRoutes);
 app.get('/api/dogs', async (req, res) => {
   const dogs_sql = `
     SELECT
+      
       name AS dog_name,
       size,
       username AS owner_username

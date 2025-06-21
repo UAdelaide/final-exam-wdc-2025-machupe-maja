@@ -24,7 +24,7 @@
           <div class="mb-3">
             <label class="form-label">Select Your Dog</label>
             <select name="dogs">
-                <option :disabled="dogList.length > 0" value="">--Choose a dog--</option>
+                <option :disabled="doglist && dogList.length > 0" value="">--Choose a dog--</option>
                 <option v-for="dog in dogList" :value="dog.id">{{ dog.name }}</option>
             </select>
           </div>

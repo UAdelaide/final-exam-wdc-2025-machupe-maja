@@ -78,15 +78,13 @@
             // Pre-load a pic for each dog 
             for (var i = 0; i < results.length; i++) {
               results[i].picUrl = await this.fetchDogPic();
-              console.log("PIC HERE=====");
-              console.dir(results[i]);
             }
 
             this.dogList = results;
           }
         },
         async fetchDogPic() {
-          // Fetch!
+          // Fetch dog pic!
           const response = await fetch("https://dog.ceo/api/breed/husky/images/random", {
             method: "GET"
           });

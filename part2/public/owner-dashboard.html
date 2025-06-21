@@ -124,13 +124,13 @@
         }
 
         async function loadDogs() {
-          const res = await fetch("/api/users/dogs", {
+          const response = await fetch("/api/users/dogs", {
               method: "GET"
           });
 
           const results = await response.json();
 
-          if (res.ok && results.message === "success") {
+          if (response.ok && results.message === "success") {
             dogNameList = results.dogs;
             console.dir(dogNameList);
           }

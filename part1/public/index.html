@@ -89,12 +89,12 @@
         },
         mounted() {
           this.loadDogList().then(() => {
+              console.dir(this.dogList);
             for (var i = 0; i < this.dogList.length; i++) {
               this.fetchDogPic().then((url) => {
                 this.dogList[i].picUrl = url;
               });
             }
-              console.dir(this.dogList);
           });
         }  
       }).mount("#content");

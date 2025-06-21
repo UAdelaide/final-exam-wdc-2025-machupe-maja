@@ -89,8 +89,10 @@
         mounted() {
           this.loadDogList().then(() => {
             for (var i = 0; i < this.dogList.length; i++) {
-              this.dogList[i].picUrl = this.fetchDogPic().then(url => url);
-            }
+              this.fetchDogPic().then(url => {
+                this.dogList[i].picUrl = url;
+              }
+            )
           });
         }  
       }).mount("#content");

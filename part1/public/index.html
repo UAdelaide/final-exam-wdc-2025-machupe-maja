@@ -8,16 +8,18 @@
   </head>
 
   <body>
-    <div id="content">
+    <main id="content">
       <h1>Dog of the Day</h1>
       <button 
         type="button" 
         title="Fetch a random picture of a husky"
-        @click="fetchRandoDogg()">
+        @click="fetchRandoDoggo()">
         huskify</button>
-      <img :src="doggo.url" title="A picture of a husky" />
-      <p v-if="doggoErr" id="error">{{doggoErr}}</p>
-    </div>
+      <div id="doggoContainer">
+        <img :src="doggo.url" title="A picture of a husky" />
+        <p v-if="doggoErr" id="error">{{doggoErr}}</p>
+      <div>
+    </main>
 
     <script type="module">
       const {createApp} = Vue;

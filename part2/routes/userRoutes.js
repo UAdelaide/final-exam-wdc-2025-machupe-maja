@@ -58,4 +58,12 @@ router.post('/login', async (req, res) => {
   }
 });
 
+
+// POST logout
+router.post('/logout', async (req, res) => {
+  // Only need to delete the user from the session
+  delete req.session.user;
+  res.json({ message: 'Logout successful' });
+});
+
 module.exports = router;

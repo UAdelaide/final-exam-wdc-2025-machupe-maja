@@ -30,10 +30,30 @@
             doggo: {
               url: ""
             },
+            doggoList: [],
             doggoErr: ""
           }
         },
         methods: {
+          async loadDogList() {
+            // Fetch the list of dogs from our walking service
+            const response = await fetch("/api/dogs", {
+              method: "GET"
+            });
+
+            const results = await response.json();
+            
+            // Oh noooo
+            if (!response.ok) {
+              this.doggoErr = "Couldn't fetch the list of doggos. ";
+              if (results.error) this.doggoErr += results.error;
+            }
+
+            // populate the list
+            if (results && results.length > 0) {
+              this.doggoList = results;
+            }
+          },
           async fetchRandoDoggo() {
             // Fetch!
             const response = await fetch("https://dog.ceo/api/breed/husky/images/random", {
@@ -44,7 +64,7 @@
             
             // Oh noooo
             if (!response.ok) {
-              this.doggoErr = "Couldn't fetch the doggo"
+              this.doggoErr = "Couldn't fetch the doggo";
             }
 
             // Set the URL
@@ -54,6 +74,7 @@
           }
         },
         mounted() {
+          this.loadDogList().then();
           this.fetchRandoDoggo().then();
         }  
       }).mount("#content");

@@ -12,7 +12,7 @@
   <main id="content">
     <h1>Dog of the Day</h1>
     <div id="doggoContainer">
-      <img :src="currPic" title="A picture of a husky" />
+      <img :src="picUrl" title="A picture of a husky" />
       <button type="button" @click="nextDoggo">Next Doggo</button>
       <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
       <div v-if="showDoggoDeets" id="doggo-deets">

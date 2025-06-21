@@ -40,7 +40,7 @@ app.get('/api/dogs', async (req, res) => {
       Users u
       ON u.user_id = d.owner_id`;
   try {
-    const [rows] = await req.db.query(dogs_sql);
+    const [rows] = await db.query(dogs_sql);
     // Returning as pure JSON instead of stringified
     res.json(rows);
   } catch (err) {

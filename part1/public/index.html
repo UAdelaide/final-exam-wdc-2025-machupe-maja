@@ -12,13 +12,13 @@
   <main id="content">
     <h1>Dog of the Day</h1>
     <div id="doggoContainer">
-      <img :src="picUrl" title="A picture of a husky" />
       <button type="button" @click="nextDoggo">Next Doggo</button>
       <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
       <div v-if="showDoggoDeets" id="doggo-deets">
-        <p>Name: {{ dogList[currDoggo].dog_name }}</p>
-        <p>Size: {{ dogList[currDoggo].size }}</p>
-        <p>Owner: {{ dogList[currDoggo].owner_username }}</p>
+        <img :src="currDoggo.pic" title="A picture of a husky" />
+        <p>Name: {{ currDoggo.dog_name }}</p>
+        <p>Size: {{ currDoggo.size }}</p>
+        <p>Owner: {{ currDoggo.owner_username }}</p>
       </div>
       <p v-if="doggoErr" id="error">{{doggoErr}}</p>
       <div>
@@ -30,30 +30,21 @@
     createApp({
       data() {
         return {
-          currDoggo: 0,
+          currPic: "",
+          currDoggoIdx: 0,
           dogList: [],
           doggoErr: "",
           showDoggoDeets: false
         }
       },
       computed: {
-        picUrl() {
-          let picUrl;
-
-          ( async() => {
-          if (this.dogList && this.dogList > 0) {
-            picUrl = this.dogList[currDoggo].picUrl;
-          } else {
-            picUrl = await this.fetchDogPics(1);
-          }
-          })();
-
-          return picUrl;
-        }
+        currDog() {
+          return this.dogList[this.currDoggoIdx];
+        },
       },
       methods: {
         nextDoggo() {
-          this.currDoggo = (this.currDoggo + 1) % this.dogList.length;
+          this.currDoggoIdx = (this.currDoggoIdx + 1) % this.dogList.length;
           this.showDoggoDeets = false;
         },
         async loadDogList() {
@@ -77,7 +68,7 @@
             const dogPics = await this.fetchDogPics(results.length);
 
             for (var i = 0; i < results.length; i++) {
-              results[i].picUrl = dogPics[i];
+              results[i].pic = dogPics[i];
             }
 
             this.dogList = results;

@@ -116,8 +116,10 @@
           });
 
           const results = await response.json();
-          console.dir('===logged in as:===');
-          console.dir(results);
+
+          if (!results || !results.user) {
+            window.replace
+          }
         }
 
         async function submitWalkRequest() {

@@ -74,7 +74,7 @@
 
         async function getCurrentUser() {
           // Already coded this in a previous question :)
-          const currentUser = checkLogin();
+          const currentUser = await checkLogin();
 
           return currentUser.user_id;
         }

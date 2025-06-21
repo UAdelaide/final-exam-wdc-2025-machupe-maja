@@ -92,6 +92,21 @@
           }
         }
 
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            });
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || 'Error logging out... wtf');
+          } catch (error) {
+            error.value = err.message;
+            message.value = '';
+          }
+        }
+
         async function loadUser() {
           const response = await fetch("/api/users/me", {
               method: "GET"

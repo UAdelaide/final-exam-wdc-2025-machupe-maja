@@ -10,11 +10,6 @@
   <body>
     <main id="content">
       <h1>Dog of the Day</h1>
-      <button 
-        type="button" 
-        title="Fetch a random picture of a husky"
-        @click="fetchNextDoggo()">
-        huskify</button>
       <div id="doggoContainer">
         <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
         <div v-if="showDoggoDeets" id="doggo-deets">

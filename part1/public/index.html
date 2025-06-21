@@ -37,6 +37,7 @@
         computed: {
           picUrl() {
             if (this.dogList.length > 0) {
+              console.dir(this.currDoggo);
               return this.dogList[this.currDoggo].picUrl;
             } else {
               return "";
@@ -93,6 +94,7 @@
                 this.dogList[i].picUrl = url;
               });
             }
+              console.dir(this.dogList);
           });
         }  
       }).mount("#content");

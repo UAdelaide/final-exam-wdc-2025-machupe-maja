@@ -9,7 +9,10 @@
 </head>
 <body class="bg-light">
   <div id="app" class="container py-4">
-    <h1 class="mb-4 text-success">Walker Dashboard</h1>
+    <header style="display: flex; flex-direction: row; justify-content: space-between">
+      <h1 class="mb-4 text-success">Walker Dashboard</h1>
+      <button @click="logout" type="button" class="btn btn-outline-danger" style="height: 2.5em">Logout</button>
+    </header>
 
     <!-- Alert messages -->
     <div v-if="message" class="alert alert-info">{{ message }}</div>
@@ -55,6 +58,24 @@
           }
         }
 
+        async function logout() {
+          try {
+            const res = await fetch('/api/users/logout', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' }
+            });
+            const result = await res.json();
+
+            if (!res.ok) throw new Error(result.error || 'Error logging out... wtf');
+
+            // Go back to the home page
+            window.location.replace("/index.html");
+          } catch (error) {
+            error.value = err.message;
+            message.value = '';
+          }
+        }
+
         async function applyToWalk(requestId) {
           try {
             const res = await fetch(`/api/walks/${requestId}/apply`, {
@@ -82,7 +103,8 @@
           walks,
           message,
           error,
-          applyToWalk
+          applyToWalk,
+          logout
         };
       }
     }).mount('#app');

@@ -38,7 +38,9 @@ router.get('/me', (req, res) => {
 // POST login (dummy version)
 router.post('/login', async (req, res) => {
 
-  if (!req.body.username || )
+  if (!req.body.username || !req.bpdy.password) {
+    
+  }
   const { username, password } = req.body;
 
   try {

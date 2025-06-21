@@ -39,13 +39,13 @@
             showDoggoDeets: false
           }
         },
-        computed() {
+        computed: {
           picUrl() {
             if (this.dogList.length > 0) {
               return dogList[currDoggo].picUrl;
             } else {
               return "";
-          }
+          };
         },
         methods: {
           async nextDoggo() {

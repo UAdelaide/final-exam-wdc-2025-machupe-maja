@@ -14,7 +14,7 @@
     <div id="doggoContainer">
       <button type="button" @click="nextDoggo">Next Doggo</button>
       <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
-      <div v-if="showDoggoDeets" id="doggo-deets">
+      <div v-if="showDoggoDeets && currDog" id="doggo-deets">
         <img :src="currDoggo.pic" title="A picture of a husky" />
         <p>Name: {{ currDoggo.dog_name }}</p>
         <p>Size: {{ currDoggo.size }}</p>
@@ -39,7 +39,11 @@
       },
       computed: {
         currDog() {
-          return this.dogList[this.currDoggoIdx];
+          if (this.dogList.length > 0) {
+            return this.dogList[this.currDoggoIdx];
+          } else {
+            return {}
+          }
         },
       },
       methods: {

@@ -43,8 +43,29 @@
         };
       },
       methods: {
-        login() {
-          console.dir('Logging in as: ' + this.form.username + " " + this.form.password);
+        async login() {
+          const request_data = {
+            email: this.form.username,
+            password: this.form.password,
+          };
+
+          const response = await fetch("/api/users/login", {
+            method: "POST",
+            credentials: "include",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(request_data),
+          });
+
+          const results = await response.json();
+
+          if (!response.ok || (results && results.error)) {
+            results.error;
+          } else {
+            console.log(results.message);
+            const { user } = results;
+          }
         }
       }
     }).mount('#app');

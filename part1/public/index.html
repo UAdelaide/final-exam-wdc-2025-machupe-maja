@@ -89,10 +89,10 @@
         mounted() {
           this.loadDogList().then(() => {
             for (var i = 0; i < this.dogList.length; i++) {
-              this.fetchDogPic().then(url => {
+              this.fetchDogPic().then((url) => {
                 this.dogList[i].picUrl = url;
-              }
-            )
+              });
+            }
           });
         }  
       }).mount("#content");

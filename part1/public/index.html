@@ -16,9 +16,9 @@
         @click="fetchNextDoggo()">
         huskify</button>
       <div id="doggoContainer">
-        <img :src="dogList[currDoggo].picUrl" title="A picture of a husky" />
         <button type="button" @click="showDoggoDeets = true">Doggo Deets</button>
         <div v-if="showDoggoDeets" id="doggo-deets">
+          <img :src="dogList[currDoggo].picUrl" title="A picture of a husky" />
           <p>Name: {{ dogList[currDoggo].dog_name }}</p>
           <p>Size: {{ dogList[currDoggo].size }}</p>
           <p>Owner: {{ dogList[currDoggo].ower_name }}</p>

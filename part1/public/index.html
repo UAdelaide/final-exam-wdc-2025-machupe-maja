@@ -36,10 +36,14 @@
             currDoggo: 0,
             dogList: [],
             doggoErr: "",
-            nextDoggo: 0
+            showDoggoDeets: false
           }
         },
         methods: {
+          async nextDoggo() {
+            this.currDoggo = (this.currDoggo + 1) % dogList.length;
+            this.showDoggoDeets = false;
+          },
           async loadDogList() {
             // Fetch the list of dogs from our walking service
             const response = await fetch("/api/dogs", {

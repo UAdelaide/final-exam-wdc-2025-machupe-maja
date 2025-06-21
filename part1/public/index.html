@@ -89,6 +89,7 @@
         }
       },
       mounted() {
+        this.fetchDogPic().then();
         this.loadDogList().then();
       }
     }).mount("#content");

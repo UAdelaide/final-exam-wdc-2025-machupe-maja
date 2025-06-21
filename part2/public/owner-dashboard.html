@@ -101,6 +101,9 @@
             const result = await res.json();
 
             if (!res.ok) throw new Error(result.error || 'Error logging out... wtf');
+
+            // Go back to the home page
+            window.location.replace("/index.html");
           } catch (error) {
             error.value = err.message;
             message.value = '';

@@ -39,8 +39,10 @@
       },
       methods: {
         async nextDoggo() {
-          this.currDoggo = (this.currDoggo + 1) % this.dogList.length;
-          this.showDoggoDeets = false;
+          fetchDogPic().then(() => {
+            this.currDoggo = (this.currDoggo + 1) % this.dogList.length;
+            this.showDoggoDeets = false;
+          });
         },
         async loadDogList() {
           // Fetch the list of dogs from our walking service

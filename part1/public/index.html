@@ -38,7 +38,8 @@
       },
       computed: {
         picUrl() {
-          return fetchDogPic();
+          let url;
+          fetchDogPic().then((pic) => url = pic);
         }
       },
       methods: {

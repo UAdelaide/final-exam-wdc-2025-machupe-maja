@@ -110,7 +110,7 @@
           }
         }
 
-        async function loadUser() {
+        async function checkLogin() {
           const response = await fetch("/api/users/me", {
               method: "GET"
           });

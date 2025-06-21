@@ -117,9 +117,8 @@
 
           const results = await response.json();
 
-          if (!results || !results.user) {
-            console.error("Not logged in");
-            // window.location.replace("index.html");
+          if (!results || !results.username) {
+            window.location.replace("index.html");
           }
         }
 

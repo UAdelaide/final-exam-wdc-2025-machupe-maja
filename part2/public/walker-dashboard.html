@@ -75,8 +75,7 @@
         async function getCurrentUser() {
           // Already coded this in a previous question :)
           const currentUser = await checkLogin();
-
-          return currentUser.user_id;
+          user.value = currentUser.user_id;
         }
 
         async function logout() {

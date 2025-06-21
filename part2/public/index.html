@@ -33,6 +33,7 @@
     <br/>
     <div>
       <h2>All Registered Dogs</h2>
+      <div v-if="error" class="alert alert-danger">{{ doggoErr }}</div>
       <table>
         <thead>
           <tr>
@@ -62,6 +63,7 @@
       data() {
         return {
           message: 'Welcome to the Dog Walking Service!',
+          dogoErr: "",
           form: {
             username: "",
             password: ""
@@ -99,6 +101,55 @@
               window.location.replace("/walker-dashboard.html");
             }
           }
+        },
+        async loadDogList() {
+          // Fetch the list of dogs from our walking service
+          const response = await fetch("/api/dogs", {
+            method: "GET"
+          });
+
+          const results = await response.json();
+
+          // Oh noooo
+          if (!response.ok) {
+            this.doggoErr = "Couldn't fetch the list of doggos. ";
+            if (results.error) this.doggoErr += results.error;
+          }
+
+          // populate the dog list
+          if (results && results.length > 0) {
+
+            // Pre-load a pic for each dog 
+            const dogPics = await this.fetchDogPics(results.length);
+
+            for (var i = 0; i < results.length; i++) {
+              results[i].pic = dogPics[i];
+            }
+
+            this.registeredDogList = results;
+          }
+        },
+        async fetchDogPics(picCount) {
+          // Fetch dog pics!
+          let fetchUrl = "https://dog.ceo/api/breeds/image/random/";
+          if (picCount) fetchUrl += picCount;
+          const response = await fetch(fetchUrl, {
+            method: "GET"
+          });
+
+          const results = await response.json();
+
+          // Oh noooo
+          if (!response.ok) {
+            this.doggoErr = "Couldn't fetch the doggo pic";
+          }
+
+          // Set the URL
+          if (results && results.status === "success") {
+            return results.message;
+          }
+
+          return null;
         }
       }
     }).mount('#app');

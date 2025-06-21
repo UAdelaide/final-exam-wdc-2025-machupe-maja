@@ -69,6 +69,8 @@
             // Pre-load a pic for each dog 
             for (var i = 0; i < this.dogList.length; i++) {
               results[i].picUrl = await this.fetchDogPic();
+              console.log("PIC HERE=====");
+              console.dir(results[i]);
             }
 
             this.dogList = results;

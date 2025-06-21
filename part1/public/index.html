@@ -45,7 +45,7 @@
       },
       methods: {
         async nextDoggo() {
-          this.currDoggo = (this.currDoggo + 1) % dogList.length;
+          this.currDoggo = (this.currDoggo + 1) % this.dogList.length;
           this.showDoggoDeets = false;
         },
         async loadDogList() {

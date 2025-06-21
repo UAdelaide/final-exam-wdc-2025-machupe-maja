@@ -36,10 +36,7 @@ app.get('/api/dogs', async (req, res) => {
       size,
       owner_id
     FROM
-      Dogs d
-    INNER JOIN
-      Users u
-      ON u.user_id = d.owner_id`;
+      Dogs d`;
   try {
     const [rows] = await db.query(dogs_sql);
     // Returning as pure JSON instead of stringified

@@ -34,7 +34,7 @@ app.get('/api/dogs', async (req, res) => {
       dog_id,
       name AS dog_name,
       size,
-      username AS owner_username
+      owner_id
     FROM
       Dogs d
     INNER JOIN

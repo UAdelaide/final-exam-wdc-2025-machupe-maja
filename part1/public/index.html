@@ -76,7 +76,7 @@
           if (results && results.length > 0) {
 
             // Pre-load a pic for each dog 
-            const dogPics = await fetchDogPics(results.length);
+            const dogPics = await this.fetchDogPics(results.length);
 
             for (var i = 0; i < results.length; i++) {
               results[i].picUrl = dogPics[i];

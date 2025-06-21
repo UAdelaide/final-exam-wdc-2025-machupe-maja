@@ -65,6 +65,12 @@
           } else {
             console.log(results.message);
             const { user } = results;
+
+            if (user.role === "owner") {
+              window.location.replace("/owner-dashboard.html");
+            } else if (user.role === "walker") {
+              window.location.replace("/walker-dashboard.html");
+            }
           }
         }
       }

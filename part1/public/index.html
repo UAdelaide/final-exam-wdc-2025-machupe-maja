@@ -30,7 +30,6 @@
     createApp({
       data() {
         return {
-          currPic: "",
           currDoggo: 0,
           dogList: [],
           doggoErr: "",
@@ -39,7 +38,17 @@
       },
       computed: {
         picUrl() {
-          return this.currPic;
+          let picUrl;
+
+          ( async() => {
+          if (this.dogList && this.dogList > 0) {
+            picUrl = this.dogList[currDoggo].picUrl;
+          } else {
+            picUrl = await fetchDogPic();
+          }
+          })();
+
+          return picUrl;
         }
       },
       methods: {
@@ -93,6 +102,8 @@
           if (results && results.status === "success") {
             return results.messsage;
           }
+
+          return null;
         }
       },
       mounted() {

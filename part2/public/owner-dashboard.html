@@ -79,6 +79,7 @@
           location: ''
         });
 
+        const dogNameList = ref([]);
         const walks = ref([]);
         const message = ref('');
         const error = ref('');
@@ -130,7 +131,7 @@
           const results = await response.json();
 
           if (res.ok && results.length > 0) {
-            dogList = results;
+            dogNameList = results;
           }
         }
 

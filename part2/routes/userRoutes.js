@@ -76,7 +76,7 @@ router.post("/logout", async (req, res) => {
 });
 
 // GET dogs for this user
-router.post("/dogs", async (req, res) => {
+router.get("/dogs", async (req, res) => {
   if (!req.session.user) {
     res.status(401).json({ error: "User not logged in" });
   } else {

@@ -29,7 +29,7 @@
         methods: {
           async fetchRandoDoggo() {
             // Fetch!
-            const response = fetch("https://dog.ceo/api/breed/husky/images/random", {
+            const response = await fetch("https://dog.ceo/api/breed/husky/images/random", {
               method: "GET"
             });
 

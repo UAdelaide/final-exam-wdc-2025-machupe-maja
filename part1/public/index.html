@@ -44,7 +44,7 @@
           if (this.dogList && this.dogList > 0) {
             picUrl = this.dogList[currDoggo].picUrl;
           } else {
-            picUrl = await fetchDogPic();
+            picUrl = await this.fetchDogPic();
           }
           })();
 
@@ -107,7 +107,6 @@
         }
       },
       mounted() {
-        this.fetchDogPic().then();
         this.loadDogList().then();
       }
     }).mount("#content");
